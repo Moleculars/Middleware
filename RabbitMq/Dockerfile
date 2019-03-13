@@ -1,3 +1,5 @@
+# sources are available : https://github.com/Moleculars/Middleware
+
 # Stupidly, the only install method offered by Erlang is NSIS setup.exe, requiring GUI libs and admin permissions.
 # So we use a windows core-based image and run it as administrator.
 FROM microsoft/powershell:windowsservercore-1709 as installer
@@ -61,8 +63,8 @@ EXPOSE 5672 15672
 
 VOLUME C:/data/db
 
-# copy startup script, that creates json files with the rabbit users, based on the latter env variables
-COPY startup.bat C:/data/bin/
+# copy run script, that creates json files with the rabbit users, based on the latter env variables
+COPY run.bat C:/data/bin/
 
 HEALTHCHECK --interval=60s --retries=3 --start-period=130s --timeout=30s CMD [ "C:/otp/rabbitmq/sbin/rabbitmqctl.bat",  "node_health_check" ]
 
