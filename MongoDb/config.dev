@@ -1,0 +1,91 @@
+storage:
+    dbPath: "C:/data/db"
+    directoryPerDB: true
+    engine: wiredTiger
+    journal:
+        enabled: false
+        commitIntervalMs: 100
+    syncPeriodSecs: 60
+    wiredTiger:
+        engineConfig:
+            cacheSizeGB: 1
+            journalCompressor: snappy
+            directoryForIndexes: true
+        collectionConfig:
+            blockCompressor: snappy
+        indexConfig:
+            prefixCompression: true
+
+
+systemLog:
+    verbosity: 0
+    traceAllExceptions: true
+    #destination: file # commented-out, means stdout.
+    #path: "C:/data/db/mongodb.log"
+    #logAppend: true
+    timeStampFormat: iso8601-utc
+    component:                
+        accessControl:
+            verbosity: 0
+        command:
+            verbosity: 0
+        control:
+            verbosity: 0
+        ftdc:
+            verbosity: 0
+        geo:
+            verbosity: 0
+        index:
+            verbosity: 0
+        network:
+            verbosity: 0
+        query:
+            verbosity: 0
+        replication.verbosity: 0
+        #replication.heartbeats.verbosity: 0
+        #replication.rollback.verbosity: 0
+        sharding.verbosity: 0
+        storage.verbosity: 0
+        #storage.journal.verbosity: 0
+        write.verbosity: 0
+
+
+net:
+    bindIpAll: true
+    port: 27017
+    ipv6: false
+    maxIncomingConnections: 10000
+    wireObjectCheck: false
+    ssl:
+        mode: disabled
+    compression:
+        compressors: snappy,zlib
+
+        
+operationProfiling:
+    slowOpThresholdMs: 100
+    mode: slowOp
+
+
+security:
+    #authorization: disabled
+    javascriptEnabled: true
+    #enableEncryption: false # Enterprise only anyway
+    #keyFile: C:/data/conf/mongo_keyfile
+
+
+#setParameter:
+
+
+#replication:
+#    oplogSizeMB: 100
+#    replSetName: MyBusiness
+#    secondaryIndexPrefetch: all
+
+
+#sharding:
+#    clusterRole: shardsvr
+#    archiveMovedChunks: false
+
+
+#auditLog: # entreprise only
